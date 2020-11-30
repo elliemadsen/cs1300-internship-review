@@ -1,38 +1,126 @@
 .App {
+  background-color: white;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 0;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #61b041;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-body {
+  text-align: left;
+  padding: 20px 50px 20px 50px;
+  background-color: #f7faf0 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.App-body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 18rem 18rem 18rem;
+  justify-content: center;
+  grid-gap: 25px 50px;
+}
+
+.button-toolbar {
+  display: flex;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+#dropdown-button {
+  background-color: #a0d975;
+}
+
+.dropdown button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 135px;
+  margin-right: 10px;
+}
+
+/* 
+.card-list, .card-you {
+  text-align: center;
+}
+
+.card-wics {
+  background-color: #36D05C;
+  color: white;
+  min-height: 517px;
+  font-size: 20px;
+}
+
+.card-wics-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.card-wics badge {
+  background-color: #12ABF6;
+  border-color: #12ABF6;
+}
+
+.card-wics-badge {
+  background-color: #12ABF6;
+  border-color: #12ABF6;
+  font-weight: normal;
+  font-size: 20px;
+  padding: 10px 12px 10px 12px;
+}
+
+#badge-left {
+  margin-right: 15px;
+}
+
+.card-list img, .card-you img {
+  padding: 25px 15px 0px 15px;
+  object-fit: cover;
+} */
+
+.card {
+  margin: 40px;
+  /* background-color: #f7faf0 !important; */
+  box-shadow: 4px 4px 4px #dee8c8;
+
+}
+
+.logo {
+  max-width: 100px;
+}
+
+.form {
+  padding-bottom: 25px;
+}
+
+.formEntry {
+  padding-right: 25px;
+}
+
+.formEntry label {
+  padding-right: 10px;
+}
+
+.form button {
+  background-color: #12ABF6;
+  border-color: #12ABF6;
+}
+
+
+.App-footer {
+  background-color: #61b041;
+  color: white;
+  padding: 20px;
 }
