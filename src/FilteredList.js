@@ -3,7 +3,7 @@ import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
 // import Navbar from '@bit/react-bootstrap.react-bootstrap.navbar';
 // import {NavBar, Nav, NavItem} from 'react-bootstrap';
 import DisplayList from './DisplayList.js'
-import {ButtonToolbar, DropdownButton, Dropdown} from "react-bootstrap";
+import {ButtonToolbar, DropdownButton, Dropdown, Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -19,7 +19,9 @@ export default class FilteredList extends React.Component {
         company: "All",
         position: "All",
         location: "All",
-        industry: "All"
+        industry: "All",
+        sortYear: false,
+        sortRating: false
       }
     }
 
@@ -51,6 +53,15 @@ export default class FilteredList extends React.Component {
         })
     };
 
+    onSelectReset = event => {
+        this.setState({
+            company: event,
+            position: event,
+            location: event,
+            industry: event
+        })
+    };
+
     matchesFilter = item => {
         if(this.state.company !== "All" && this.state.company !== item.company) {
             return false
@@ -67,16 +78,60 @@ export default class FilteredList extends React.Component {
         return true
     }
 
+    onSelectSortYear = event => {
+        this.setState({
+            sortYear: event.target.checked
+        });
+      }
+
+      onSelectSortRating = event => {
+        this.setState({
+            sortRating: event.target.checked
+        });
+      }
+  
+      sort = (a, b) => {
+        // Sort by year only
+        if (this.state.sortYear && !this.state.sortRating) {
+            if (a.year > b.year) {
+              return -1;
+            } else if (a.year < b.year) {
+              return 1;
+            } else {
+              return 0;
+            }
+        }
+        // Sort by rating only
+        if (this.state.sortRating && !this.state.sortYear) {
+          if (a.rating > b.rating) {
+            return -1;
+          } else if (a.rating < b.rating) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        // Both - sort by rating, then year
+        if (this.state.sortRating && this.state.sortYear) {
+            if (a.rating > b.rating) {
+                return -1;
+              } else if (a.rating < b.rating) {
+                return 1;
+              } else {
+                if (a.year > b.year) {
+                    return -1;
+                  } else if (a.year < b.year) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+              }
+        }
+      }
+
     render() {
         return (
             <div>
-                <Navbar bg="light" expand="lg">
-                    <Nav>
-                        <Nav.Item><Nav.Link eventKey="All" onSelect={this.onSelectFilterCompany}>Rating</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link eventKey="Pinterest" onSelect={this.onSelectFilterCompany}>Year</Nav.Link></Nav.Item>
-                    </Nav>
-                </Navbar>
-
                 <ButtonToolbar className="button-toolbar">
                     <DropdownButton title="Industry" className="dropdown" id="dropdown-basic" variant="success">
                         <Dropdown.Item eventKey="All" onSelect={this.onSelectFilterIndustry}> All </Dropdown.Item>
@@ -110,10 +165,29 @@ export default class FilteredList extends React.Component {
                         <Dropdown.Item eventKey="Austin, TX" onSelect={this.onSelectFilterLocation}> Austin, TX </Dropdown.Item>
                         <Dropdown.Item eventKey="Chicago, IL" onSelect={this.onSelectFilterLocation}> Chicago, IL </Dropdown.Item>
                     </DropdownButton>
+                    <Button eventKey="All" onSelect={this.onSelectReset} variant="success">Reset</Button>
+                <Navbar bg="light">
+                    <Nav>
+                        <div>
+                            <form>
+                                <label>
+                                    Sort by &nbsp;
+                                    <input type="checkbox" onChange={this.onSelectSortYear} />
+                                    Year
+                                </label>
+                                <label>
+                                    &nbsp;
+                                    <input type="checkbox" onChange={this.onSelectSortRating} />
+                                    Rating
+                                </label>
+                            </form>
+                        </div>
+                    </Nav>
+                </Navbar>
                 </ButtonToolbar>
+
  
-                
-                <DisplayList list={this.props.list.filter(this.matchesFilter)}/>
+                <DisplayList list={this.props.list.filter(this.matchesFilter).sort(this.sort)} onSelectFavorite={this.props.onSelectFavorite}/>
             </div>
         )
     }

@@ -97,11 +97,16 @@
 
 }
 
+.star {
+  max-width: 30px;
+  max-height: 30px;
+}
+
 .logo {
   max-width: 100px;
 }
 
-.form {
+/* .form {
   padding-bottom: 25px;
 }
 
@@ -116,7 +121,7 @@
 .form button {
   background-color: #12ABF6;
   border-color: #12ABF6;
-}
+} */
 
 
 .App-footer {
