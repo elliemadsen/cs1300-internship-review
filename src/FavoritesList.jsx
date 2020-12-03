@@ -5,10 +5,10 @@ export default class FavoritesList extends React.Component {
     render() {
         if (this.props.items.length === 0) {
             return (
-                <p>No internships have been favorited.</p>)
+                <h6>No internships have been favorited.</h6>)
         } else{
             return (
-                <DisplayList list={this.props.items}/>
+                <DisplayList list={this.props.items} favorites={this.props.favorites} onSelectFavorite={this.props.onSelectFavorite}/>
             )
         }
     }

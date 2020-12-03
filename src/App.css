@@ -1,5 +1,5 @@
 .App {
-  background-color: white;
+  background-color: #f7faf0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -11,26 +11,34 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   color: white;
   padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .App-body {
   text-align: left;
   padding: 20px 50px 20px 50px;
-  background-color: #f7faf0 !important;
+  margin-bottom: 100px;
 }
 
+.App-header a {
+  color: white;
+}
 
-.App-body ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 18rem 18rem 18rem;
-  justify-content: center;
-  grid-gap: 25px 50px;
+.App-header a:hover {
+  color: #f7faf0;
+}
+
+h1 {
+  margin-top: 40px !important;
+  margin-bottom: 20px !important;
+}
+
+h6 {
+  margin-left: 50px !important;
 }
 
 .button-toolbar {
@@ -39,11 +47,13 @@
   padding-bottom: 25px;
 }
 
-#dropdown-button {
+/* #dropdown-button {
   background-color: #a0d975;
-}
+} */
 
 .dropdown button {
+  background-color: #61b041;
+  border: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,50 +61,9 @@
   margin-right: 10px;
 }
 
-/* 
-.card-list, .card-you {
-  text-align: center;
-}
-
-.card-wics {
-  background-color: #36D05C;
-  color: white;
-  min-height: 517px;
-  font-size: 20px;
-}
-
-.card-wics-title {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.card-wics badge {
-  background-color: #12ABF6;
-  border-color: #12ABF6;
-}
-
-.card-wics-badge {
-  background-color: #12ABF6;
-  border-color: #12ABF6;
-  font-weight: normal;
-  font-size: 20px;
-  padding: 10px 12px 10px 12px;
-}
-
-#badge-left {
-  margin-right: 15px;
-}
-
-.card-list img, .card-you img {
-  padding: 25px 15px 0px 15px;
-  object-fit: cover;
-} */
-
 .card {
   margin: 40px;
-  /* background-color: #f7faf0 !important; */
   box-shadow: 4px 4px 4px #dee8c8;
-
 }
 
 .star {
@@ -103,26 +72,8 @@
 }
 
 .logo {
-  max-width: 100px;
+  max-width: 80px;
 }
-
-/* .form {
-  padding-bottom: 25px;
-}
-
-.formEntry {
-  padding-right: 25px;
-}
-
-.formEntry label {
-  padding-right: 10px;
-}
-
-.form button {
-  background-color: #12ABF6;
-  border-color: #12ABF6;
-} */
-
 
 .App-footer {
   background-color: #61b041;

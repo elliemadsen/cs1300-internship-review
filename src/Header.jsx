@@ -1,22 +1,15 @@
 import React, { Component } from "react";
-// import logo from './imgs/logo.png';
 
 class Header extends Component {
   render() {
     return (
       <header className="App-header">
-          <p>
+          <h4>
               Explore internships completed by Brown students and alumni.
-          </p>
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <div className="App-header-links">
-          <div className="Link-history">
-            <a href="#history">History</a>
+          </h4>
+          <div>
+            <a href="#favorites">&#9733; Favorites</a>
           </div>
-          <div className="Link-learn">
-            <a href="#learn">Learn</a>
-          </div>
-        </div> */}
       </header>
     );
   }

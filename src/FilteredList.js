@@ -1,7 +1,5 @@
 import React from "react";
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
-// import Navbar from '@bit/react-bootstrap.react-bootstrap.navbar';
-// import {NavBar, Nav, NavItem} from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap'
 import DisplayList from './DisplayList.js'
 import {ButtonToolbar, DropdownButton, Dropdown, Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -144,9 +142,21 @@ export default class FilteredList extends React.Component {
                     </DropdownButton>
                     <DropdownButton title="Company" className="dropdown" id="dropdown-basic" variant="success">
                         <Dropdown.Item eventKey="All" onSelect={this.onSelectFilterCompany}> All </Dropdown.Item>
-                        <Dropdown.Item eventKey="Pinterest" onSelect={this.onSelectFilterCompany}> Pinterest </Dropdown.Item>
-                        <Dropdown.Item eventKey="Google" onSelect={this.onSelectFilterCompany}> Google </Dropdown.Item>
+                        <Dropdown.Item eventKey="Bloomberg" onSelect={this.onSelectFilterCompany}> Bloomberg </Dropdown.Item>
+                        <Dropdown.Item eventKey="Duolingo" onSelect={this.onSelectFilterCompany}> Duolingo </Dropdown.Item>
+                        <Dropdown.Item eventKey="Epic" onSelect={this.onSelectFilterCompany}> Epic </Dropdown.Item>
                         <Dropdown.Item eventKey="Facebook" onSelect={this.onSelectFilterCompany}> Facebook </Dropdown.Item>
+                        <Dropdown.Item eventKey="Figma" onSelect={this.onSelectFilterCompany}> Figma </Dropdown.Item>
+                        <Dropdown.Item eventKey="Goldman Sachs" onSelect={this.onSelectFilterCompany}> Goldman Sachs </Dropdown.Item>
+                        <Dropdown.Item eventKey="Google" onSelect={this.onSelectFilterCompany}> Google </Dropdown.Item>
+                        <Dropdown.Item eventKey="Khan Academy" onSelect={this.onSelectFilterCompany}> Khan Academy </Dropdown.Item>
+                        <Dropdown.Item eventKey="LinkedIn" onSelect={this.onSelectFilterCompany}> LinkedIn </Dropdown.Item>
+                        <Dropdown.Item eventKey="McKinsey" onSelect={this.onSelectFilterCompany}> McKinsey </Dropdown.Item>
+                        <Dropdown.Item eventKey="Pinterest" onSelect={this.onSelectFilterCompany}> Pinterest </Dropdown.Item>
+                        <Dropdown.Item eventKey="Pixar" onSelect={this.onSelectFilterCompany}> Pixar </Dropdown.Item>
+                        <Dropdown.Item eventKey="Slack" onSelect={this.onSelectFilterCompany}> Slack </Dropdown.Item>
+                        <Dropdown.Item eventKey="Squarespace" onSelect={this.onSelectFilterCompany}> Squarespace </Dropdown.Item>
+                        <Dropdown.Item eventKey="Unity" onSelect={this.onSelectFilterCompany}> Unity </Dropdown.Item>
                     </DropdownButton>
                     <DropdownButton title="Position" className="dropdown" id="dropdown-basic" variant="success">
                         <Dropdown.Item eventKey="All" onSelect={this.onSelectFilterPosition}> All </Dropdown.Item>
@@ -165,7 +175,7 @@ export default class FilteredList extends React.Component {
                         <Dropdown.Item eventKey="Austin, TX" onSelect={this.onSelectFilterLocation}> Austin, TX </Dropdown.Item>
                         <Dropdown.Item eventKey="Chicago, IL" onSelect={this.onSelectFilterLocation}> Chicago, IL </Dropdown.Item>
                     </DropdownButton>
-                    <Button eventKey="All" onSelect={this.onSelectReset} variant="success">Reset</Button>
+                    <Button onClick={(e) => this.onSelectReset("All")} variant="success">Reset</Button>
                 <Navbar bg="light">
                     <Nav>
                         <div>
@@ -187,7 +197,7 @@ export default class FilteredList extends React.Component {
                 </ButtonToolbar>
 
  
-                <DisplayList list={this.props.list.filter(this.matchesFilter).sort(this.sort)} onSelectFavorite={this.props.onSelectFavorite}/>
+                <DisplayList list={this.props.list.filter(this.matchesFilter).sort(this.sort)} favorites={this.props.favorites} onSelectFavorite={this.props.onSelectFavorite}/>
             </div>
         )
     }
