@@ -1,3 +1,28 @@
+# Design Choices
+
+App.js includes three main vertically-stacked sections of the App: Header, Body, and Footer. All of the app's dynamic
+functionality is included within Body.jsx.
+
+Body includes two main vertically-stacked sections: FilteredList and FavoritesList. This class is also where the list
+of all internship reviews and the list of favorited internship reviews are stored as a constant value and a state value,
+respectively.
+
+FilteredList determines which items should be displayed based on the fields the user has selected (including company,
+location, position, industry, and sorting by year or rating). It also includes the html elements for the buttons that
+allow the user to select these fields. Once the list of items that fit the selected fields are determined using filter,
+map, and sort functions, this list is passed to DisplayList as a props item.
+
+FavoritesList determines which items should be displayed within the Favorites section. It simply passes the list of
+favorited items on the DisplayList as a props item.
+
+DisplayList renders each item card using consistent styling.
+
+Body.jsx passes a callback function to FilteredList and FavoritesList that allows items to be added to the list of
+favorited items. Both FilteredList and FavoritesList pass on this function to DisplayList as a props field. This is
+how user interactions with buttons rendered in the DisplayList class (namely the favorites star toggle) are able to
+alter the state variable in Body.jsx.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

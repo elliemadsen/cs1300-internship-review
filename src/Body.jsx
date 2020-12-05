@@ -32,13 +32,14 @@ class Body extends Component {
 
     constructor(props) {
         super(props);
+        // state includes a list of favorited intenships. this is updated by using the callback function addToFavorites
         this.state = { 
           favorites: [
           ]
         }
       }
 
-      // called on star click -- passed to DisplayList as a callback function
+    // called on star click, this function is passed to DisplayList as a callback function
     addToFavorites = (item) => {
         if (!this.state.favorites.includes(item)){ // add to cart
           this.setState({
@@ -51,6 +52,7 @@ class Body extends Component {
             }
       }
 
+      // returns the average rating of all items in the favorites list within state
       getAverageRating = () => {
         if (this.state.favorites.length === 0) {
           return 0;

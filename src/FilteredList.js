@@ -12,7 +12,7 @@ export default class FilteredList extends React.Component {
 
     constructor(props) {
       super(props);
-      // We will be keeping track of the selected size as a state. A state is a variable which is remembered when the component re-renders. 
+      // keeping track of the selected fields as state variables. 
       this.state = { 
         company: "All",
         position: "All",
@@ -23,34 +23,36 @@ export default class FilteredList extends React.Component {
       }
     }
 
-    // sets the state to the selected industry, function passed to the onSelect event handler of HTML buttons
+    // sets the state to the selected industry.
+    // this function is passed to the onSelect event handler of HTML buttons
     onSelectFilterIndustry = event => {
         this.setState({
             industry: event
         })
     };
 
-    // sets the state to the selected company, function passed to the onSelect event handler of HTML buttons
+    // sets the state to the selected company
     onSelectFilterCompany = event => {
         this.setState({
             company: event
         })
     };
 
-    // sets the state to the selected position, function passed to the onSelect event handler of HTML buttons
+    // sets the state to the selected position
     onSelectFilterPosition = event => {
         this.setState({
             position: event
         })
     };
 
-    // sets the state to the selected location, function passed to the onSelect event handler of HTML buttons
+    // sets the state to the selected location
     onSelectFilterLocation = event => {
         this.setState({
             location: event
         })
     };
 
+    // sets the state company, position, location, and industry to "All"
     onSelectReset = event => {
         this.setState({
             company: event,
@@ -60,6 +62,7 @@ export default class FilteredList extends React.Component {
         })
     };
 
+    // determines whether item aligns with the fields in state
     matchesFilter = item => {
         if(this.state.company !== "All" && this.state.company !== item.company) {
             return false
@@ -76,19 +79,22 @@ export default class FilteredList extends React.Component {
         return true
     }
 
+    // sets the state to the selected field 'sort year'
     onSelectSortYear = event => {
         this.setState({
             sortYear: event.target.checked
         });
-      }
+    }
 
-      onSelectSortRating = event => {
+    // sets the state to the selected field 'sort rating'
+    onSelectSortRating = event => {
         this.setState({
             sortRating: event.target.checked
         });
-      }
+    }
   
-      sort = (a, b) => {
+    // given two items, determine which appears first based on the value of state 'sort year' and 'sort rating' fields
+    sort = (a, b) => {
         // Sort by year only
         if (this.state.sortYear && !this.state.sortRating) {
             if (a.year > b.year) {
@@ -196,7 +202,6 @@ export default class FilteredList extends React.Component {
                 </Navbar>
                 </ButtonToolbar>
 
- 
                 <DisplayList list={this.props.list.filter(this.matchesFilter).sort(this.sort)} favorites={this.props.favorites} onSelectFavorite={this.props.onSelectFavorite}/>
             </div>
         )

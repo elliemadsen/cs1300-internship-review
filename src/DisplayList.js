@@ -22,6 +22,7 @@ import slack from "./img/slack.png"
 // maps each product from App.js to an HTML element or Component for render
 export default class DisplayList extends React.Component {
 
+    // based on whether the item is favorited, returns whether the grey or yellow star should be displayed
     getStar = (item) => {
         if(this.props.favorites.includes(item)) {
             return yellowstar;
@@ -30,10 +31,12 @@ export default class DisplayList extends React.Component {
         }
     }
 
+    // adds the item to the favorites list using the callback function onSelectFavorite
     favorite = (item) => {
         this.props.onSelectFavorite(item);
     }
 
+    // returns the image to be associated with the item
     getImg = (item) => {
         if (item.company === "Pinterest") { return pinterest;}
         if (item.company === "Google") { return google;}
